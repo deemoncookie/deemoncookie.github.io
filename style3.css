@@ -1,0 +1,64 @@
+/* Calendar styling */
+#number-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+}
+
+.number-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  background-color: #4c2a57;
+}
+
+.number-box.clicked {
+  background-color: gray;
+}
+
+.number-box:hover:not(.clicked) {
+  background-color: #5cb85c;
+}
+
+.number {
+  font-size: 16px;
+}
+
+.message {
+  display: none;
+  width: 500px;
+  padding: 5px;
+  font-size: 30px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h3, h4 {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+body {
+  background-color: pink;
+}
+
+
+.number-box:nth-of-type(odd) {
+  background-color: #e7b4c9;
+}
+
