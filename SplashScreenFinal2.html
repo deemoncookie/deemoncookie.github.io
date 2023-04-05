@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  img {
+    max-width: 100%;
+    height: auto;
+    opacity: 0; /* hide the image initially */
+    transition: opacity 1s ease-in-out; /* add a fade-in effect */
+  }
+  #spinner {
+    display: block;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite; /* add a loading spinner */
+  }
+  #no-internet {
+    display: none;
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    padding: 10px;
+  }
+</style>
+<title>SplashScreen GenkiPets</title>
+</head>
+<body>
+  <div id="spinner"><img src="https://cdn.discordapp.com/attachments/768786304585695275/1087484153345359872/genk2.png"></div> <!-- add the image inside the spinner -->
+  <img src="https://cdn.discordapp.com/attachments/768786304585695275/1087484153345359872/genk2.png" onload="document.getElementById('spinner').style.display = 'none'; this.style.opacity = 1;"> <!-- add an onload event handler to show the image and hide the spinner -->
+  <div id="no-internet">No internet connection</div>
+
+  <script>
+    window.addEventListener('load', function() {
+      checkInternetConnection();
+    });
+
+    window.addEventListener('online', function() {
+      checkInternetConnection();
+      document.getElementById('no-internet').style.display = 'none';
+    });
+
+    window.addEventListener('offline', function() {
+      checkInternetConnection();
+      document.getElementById('no-internet').style.display = 'block';
+    });
+
+    function checkInternetConnection() {
+      if (!navigator.onLine) {
+        document.getElementById('no-internet').style.display = 'block';
+      } else {
+        document.getElementById('no-internet').style.display = 'none';
+      }
+    }
+
+    function fadeOutAndRedirect() {
+      var img = document.querySelector('img');
+      img.style.opacity = 0;
+      setTimeout(function() {
+        window.location.href = 'https://deemoncookie.github.io/BookingFinal2.html';
+      }, 1000); /* wait for 1 second before redirecting */
+    }
+  </script>
+  
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #spinner img {
+      animation: spin 2s linear infinite; /* spin the image inside the spinner */
+    }
+  </style>
+
+  <script>
+    setTimeout(fadeOutAndRedirect, 2000); /* call the fadeOutAndRedirect function after 2 seconds */
+  </script>
+</body>
+</html>
